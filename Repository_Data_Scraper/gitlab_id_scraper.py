@@ -13,14 +13,13 @@ options.headless = True # keep selenium from opening browser window
 driver = webdriver.Firefox(executable_path='C:/Users/Noah/AppData/Local/Programs/Python/Python310/geckodriver.exe', options=options)
 
 
-# loading in the list of urls we'll be using, and creating lists to later
-# turn into final data frame
+# loading in the list of urls we'll be using, and creating lists to later turn into final data frame
 url_list = pd.read_csv('C:/Users/Noah/Coding/hack4la/open_source_projects_updater/repo_urls.csv')
 id_list = []
 new_url_list = []
 fulldf = pd.DataFrame()
 
-
+# loop through every url in spreadsheet
 for url in url_list['url']:
     new_url_list.append(url)
     if 'gitlab.com' in url: 
