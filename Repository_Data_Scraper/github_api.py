@@ -5,17 +5,12 @@ import numpy as np
 import json
 from dateutil import parser
 
-# find out why the last api url's info isn't collected! test a small list
-# TO DO: have it update periodically (test w/ only a small amt of data)
-# after that: get access to main spreadsheet to edit!
-
 
 ## import json file that contains my personal access token, enabling github api
 file = open("C:/Users/Noah/Coding/hack4la/projects_database/pat.json")
 pat = json.load(file)
 
-## function that gets data from a resource url but also includes possible
-# error message
+## function that gets data from a resource url but also includes possible error message
 def getdata(url):
     try:
         response = requests.get(url, auth=('noneill256', pat['personal access token']))
@@ -100,7 +95,7 @@ def CollectData():
             update_list = np.append(update_list, '')
             contrib_count_list = np.append(contrib_count_list, '')
         
-        
+    # create a dataframe out of the desired data    
     fulldf = pd.DataFrame()
     fulldf['last_updated'] = update_list
     fulldf['num_of_contributors'] = contrib_count_list
